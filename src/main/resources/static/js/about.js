@@ -1,0 +1,1 @@
+alert("ALLAH AKBER");

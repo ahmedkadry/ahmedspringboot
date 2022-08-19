@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>login</title>
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+	crossorigin="anonymous">
+<link
+	href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css"
+	rel="stylesheet" crossorigin="anonymous" />
+<style>
+body, html {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #005C97;
+	background: -webkit-linear-gradient(to left, #363795, #005C97);
+	background: linear-gradient(to left, #363795, #005C97);
+}
+</style>
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg  navbar-dark bg-primary">
+		<a class="navbar-brand" href="#">Navbar</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="#">Home
+						<span class="sr-only">(current)</span>
+				</a></li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<!-- 				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+				<a class="btn btn-light my-2 my-sm-0 mr-1 btn-sm" th:href="@{/login}"
+					type="submit">login</a> 
+				<a 	class="btn btn-light my-2 my-sm-0  btn-sm" th:href="@{/}"
+					type="submit">signup</a>
+			</form>
+		</div>
+	</nav>
+
+	<div class="container" style="padding-top: 100px;">
+		<div th:if="${param.logout}">
+			<h5 class="text-center text-success ">Logout Successfully</h5>
+		</div>
+
+		<div th:if="${param.error}">
+			<h5 class="text-center text-danger ">Invalid Username Or
+				Password</h5>
+		</div>
+		<form class="form-signin card" method="post" th:action="@{/dologin}">
+			<h2 class="form-signin-heading">Login Form</h2>
+			<p>
+				<label for="username" class="sr-only">Username</label> <input
+					type="text" id="username" name="username" class="form-control"
+					placeholder="Username" required autofocus>
+			</p>
+			<p>
+				<label for="password" class="sr-only">Password</label> <input
+					type="password" id="password" name="password" class="form-control"
+					placeholder="Password" required>
+			</p>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+				in</button>
+		</form>
+	</div>
+</body>
+</html>
